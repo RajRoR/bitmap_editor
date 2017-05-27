@@ -1,16 +1,30 @@
-class BitmapEditor
+require './lib/app'
+require './lib/mapper'
 
-  def run(file)
-    return puts "please provide correct file" if file.nil? || !File.exists?(file)
+class BitmapEditor
+  attr_reader :file
+
+  # Initialize the class.
+  def initialize(file)
+    @file = file
+  end
+
+  def run
+    plot_bitmap(file)
+  end
+
+  private
+
+  def plot_bitmap(file)
+    return puts "Please provide correct file" if file.nil? || !File.exists?(file)
+
+    app = App.new
 
     File.open(file).each do |line|
       line = line.chomp
-      case line
-      when 'S'
-          puts "There is no image"
-      else
-          puts 'unrecognised command :('
-      end
+      mapper = app.mapper
+      mapper.map(line).execute
     end
   end
+
 end
