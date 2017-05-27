@@ -19,7 +19,7 @@ module Commands
 
     # Color the pixel (x, y)
     def execute
-      fail MissingBitmap if app.bitmap.nil?
+      raise MissingBitmap if app.bitmap.nil?
       app.bitmap[x, y] = color
     end
 
@@ -29,8 +29,8 @@ module Commands
     # @param [] args List of the arguments passed to the initialize method.
     # @return [ColorPixel] the newly created instance of the command.
     def self.create(app, *args)
-      fail BadNumberArguments.new(args.length, 3) if args.length != 3
-      fail InvalidArguments unless Utils.is_i?(args[0]) && Utils.is_i?(args[1]) && Utils.is_color?(args[2])
+      raise BadNumberArguments.new(args.length, 3) if args.length != 3
+      raise InvalidArguments unless Utils.is_i?(args[0]) && Utils.is_i?(args[1]) && Utils.is_color?(args[2])
 
       new(app, *args)
     end

@@ -21,7 +21,7 @@ module Commands
 
     # Draw the pixels with color `color` in row Y between columns X1 and X2 (inclusive).
     def execute
-      fail MissingBitmap if app.bitmap.nil?
+      raise MissingBitmap if app.bitmap.nil?
 
       (x1..x2).each do |x|
         color_pixel = Commands::ColorPixel.create(app, x, y, color)
@@ -35,9 +35,9 @@ module Commands
     # @param [] args List of the arguments passed to the initialize method
     # @return [HorizontalDraw] the newly created instance of the command
     def self.create(app, *args)
-      fail BadNumberArguments.new(args.length, 4) if args.length != 4
-      fail InvalidArguments unless Utils.is_i?(args[0]) && Utils.is_i?(args[1]) &&
-        Utils.is_i?(args[2]) && Utils.is_color?(args[3])
+      raise BadNumberArguments.new(args.length, 4) if args.length != 4
+      raise InvalidArguments unless Utils.is_i?(args[0]) && Utils.is_i?(args[1]) &&
+                                    Utils.is_i?(args[2]) && Utils.is_color?(args[3])
 
       new(app, *args)
     end

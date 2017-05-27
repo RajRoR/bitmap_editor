@@ -1,6 +1,6 @@
 # Base class for all the `Commands` classes
 class Command
-  attr_reader   :app
+  attr_reader :app
 
   # Initialize Command Class.
   def initialize(app)
@@ -9,6 +9,6 @@ class Command
 
   # Should be implemented by the child class.
   def execute
-    fail NotImplementedMethod
+    raise NotImplementedMethod
   end
 end

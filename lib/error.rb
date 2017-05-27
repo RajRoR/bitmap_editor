@@ -29,4 +29,3 @@ class BadNumberArguments < Error
     super("Wrong number of arguments (#{given} given, #{expected} expected).")
   end
 end
-

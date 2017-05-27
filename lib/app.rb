@@ -9,5 +9,4 @@ class App
     @bitmap = nil
     @mapper = Mapper.new(self)
   end
-
 end

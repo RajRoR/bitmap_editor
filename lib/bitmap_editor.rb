@@ -8,7 +8,7 @@ class BitmapEditor
   private
 
   def plot_bitmap(file)
-    return puts "Please provide correct file" if file.nil? || !File.exists?(file)
+    return puts 'Please provide correct file' if file.nil? || !File.exist?(file)
 
     app = App.new
 
@@ -18,5 +18,4 @@ class BitmapEditor
       mapper.map(line).execute
     end
   end
-
 end

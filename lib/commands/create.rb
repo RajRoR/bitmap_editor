@@ -29,8 +29,8 @@ module Commands
     #
     # @return [Create] the newly created instance of the command.
     def self.create(app, *args)
-      fail BadNumberArguments.new(args.length, 2) if args.length != 2
-      fail InvalidArguments unless Utils.is_i?(args[0]) && Utils.is_i?(args[1])
+      raise BadNumberArguments.new(args.length, 2) if args.length != 2
+      raise InvalidArguments unless Utils.is_i?(args[0]) && Utils.is_i?(args[1])
 
       new(app, *args)
     end

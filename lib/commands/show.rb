@@ -2,7 +2,7 @@ module Commands
   class Show < Command
     # Display the bitmap.
     def execute
-      fail MissingBitmap if app.bitmap.nil?
+      raise MissingBitmap if app.bitmap.nil?
 
       width = @app.bitmap.width
       height = @app.bitmap.height
@@ -20,7 +20,7 @@ module Commands
     # @param [] args List of the arguments passed to the initialize method.
     # @return [Show] the newly created instance of the command.
     def self.create(app, *args)
-      fail BadNumberArguments.new(args.length, 0) unless args.empty?
+      raise BadNumberArguments.new(args.length, 0) unless args.empty?
 
       new(app)
     end

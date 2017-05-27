@@ -15,26 +15,25 @@ class Mapper
 
   def self.commands
     {
-      "I" => "Create",
-      "C" => "Clear",
-      "L" => "ColorPixel",
-      "V" => "VerticalDraw",
-      "H" => "HorizontalDraw",
-      "S" => "Show"
+      'I' => 'Create',
+      'C' => 'Clear',
+      'L' => 'ColorPixel',
+      'V' => 'VerticalDraw',
+      'H' => 'HorizontalDraw',
+      'S' => 'Show'
     }
   end
 
   Mapper.commands.each do |c, v|
     define_method("command_#{c}") do |*args|
-      Commands.const_get("#{v}").create(*args)
+      Commands.const_get(v.to_s).create(*args)
     end
   end
 
   def map(str)
     args = str.split
     cmd = args.shift
-    fail InvalidCommand, cmd unless Mapper.commands.has_key?(cmd)
+    raise InvalidCommand, cmd unless Mapper.commands.key?(cmd)
     public_send("command_#{cmd}", app, *args)
   end
 end
-

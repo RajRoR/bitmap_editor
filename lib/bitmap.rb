@@ -22,14 +22,14 @@ class Bitmap
   #
   # @return [String] the data representing the bitmap.
   def data
-    @data ||= "O" * size
+    @data ||= 'O' * size
   end
 
   # Clear the bitmap by setting all the pixels to O.
   #
   # @return [String] the data representing the bitmap all with O.
   def clear
-    @data = "O" * size
+    @data = 'O' * size
   end
 
   # Element reference operator to get a pixel.
@@ -38,7 +38,7 @@ class Bitmap
   # @param [Integer] y the y of the pixel
   # @return [Char] the color of the pixel
   def [](x, y)
-    fail OutOfRange unless check_range(x, y)
+    raise OutOfRange unless check_range(x, y)
     data[index(x, y)]
   end
 
@@ -66,7 +66,7 @@ class Bitmap
   # @param [Integer] y the y of the pixel
   # @param [Char] the new color of the pixel
   def []=(x, y, color)
-    fail OutOfRange unless check_range(x, y)
+    raise OutOfRange unless check_range(x, y)
     data[index(x, y)] = color
   end
 end
