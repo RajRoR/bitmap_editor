@@ -59,4 +59,14 @@ class Bitmap
   def check_range(x, y)
     !(x < 1 || y < 1 || x > width || y > height)
   end
+
+  # Set a pixel with the given color.
+  #
+  # @param [Integer] x the x of the pixel
+  # @param [Integer] y the y of the pixel
+  # @param [Char] the new color of the pixel
+  def []=(x, y, color)
+    fail OutOfRange unless check_range(x, y)
+    data[index(x, y)] = color
+  end
 end

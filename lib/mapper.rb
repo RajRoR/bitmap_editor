@@ -1,4 +1,5 @@
 require './lib/commands/create'
+require './lib/commands/color_pixel'
 require './lib/commands/show'
 require './lib/error'
 
@@ -14,7 +15,7 @@ class Mapper
     {
       "I" => "Create",
       "C" => "Clear",
-      "L" => "SetPixel",
+      "L" => "ColorPixel",
       "V" => "VerticalDraw",
       "H" => "HorizontalDraw",
       "S" => "Show"

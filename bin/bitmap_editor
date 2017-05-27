@@ -1,5 +1,4 @@
 #!/usr/bin/env ruby
 require './lib/bitmap_editor'
 
-bitmap_editor = BitmapEditor.new(ARGV.first)
-bitmap_editor.run
+BitmapEditor.new.run(ARGV.first)

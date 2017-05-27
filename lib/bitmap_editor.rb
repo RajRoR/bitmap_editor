@@ -1,15 +1,7 @@
 require './lib/app'
-require './lib/mapper'
 
 class BitmapEditor
-  attr_reader :file
-
-  # Initialize the class.
-  def initialize(file)
-    @file = file
-  end
-
-  def run
+  def run(file)
     plot_bitmap(file)
   end
 

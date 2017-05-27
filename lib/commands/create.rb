@@ -1,5 +1,6 @@
 require './lib/command'
 require './lib/bitmap'
+require './lib/utils'
 
 module Commands
   class Create < Command
