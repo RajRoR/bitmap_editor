@@ -3,7 +3,6 @@ require './lib/bitmap'
 
 module Commands
   class Create < Command
-    attr_reader :app
     attr_reader :width, :height
 
     # Initialize the Class.
@@ -19,7 +18,6 @@ module Commands
 
     # Execute the command. Create the Bitmap object.
     def execute
-      @saved_img = app.bitmap unless app.bitmap.nil?
       app.bitmap = Bitmap.new(width, height)
     end
 
@@ -31,6 +29,7 @@ module Commands
     # @return [Create] the newly created instance of the command.
     def self.create(app, *args)
       fail BadNumberArguments.new(args.length, 2) if args.length != 2
+      fail InvalidArguments unless Utils.is_i?(args[0]) && Utils.is_i?(args[1])
       new(app, *args)
     end
   end
