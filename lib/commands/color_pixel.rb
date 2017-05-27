@@ -20,7 +20,6 @@ module Commands
     # Color the pixel (x, y)
     def execute
       fail MissingBitmap if app.bitmap.nil?
-      # @saved_data = app.bitmap[x, y]
       app.bitmap[x, y] = color
     end
 
@@ -32,6 +31,7 @@ module Commands
     def self.create(app, *args)
       fail BadNumberArguments.new(args.length, 3) if args.length != 3
       fail InvalidArguments unless Utils.is_i?(args[0]) && Utils.is_i?(args[1]) && Utils.is_color?(args[2])
+
       new(app, *args)
     end
   end

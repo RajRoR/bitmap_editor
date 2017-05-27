@@ -1,7 +1,7 @@
 class Utils
   # Return if `str` is an Integer
   def self.is_i?(str)
-    /\A[-+]?\d+\z/ === str
+    str.is_a?(Integer) ? true : /\A[-+]?\d+\z/ === str
   end
 
   # Return is `str` is a color

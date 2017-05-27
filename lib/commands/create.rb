@@ -31,6 +31,7 @@ module Commands
     def self.create(app, *args)
       fail BadNumberArguments.new(args.length, 2) if args.length != 2
       fail InvalidArguments unless Utils.is_i?(args[0]) && Utils.is_i?(args[1])
+
       new(app, *args)
     end
   end

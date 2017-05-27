@@ -49,13 +49,6 @@ describe Commands::ColorPixel do
   context "when no bitmap was created" do
     subject { Commands::ColorPixel.new(app, x, y, color) }
 
-    describe "#initialize" do
-      it { expect(subject.app).to eq(app) }
-      it { expect(subject.x).to eq(x.to_i) }
-      it { expect(subject.y).to eq(y.to_i) }
-      it { expect(subject.color).to eq(color) }
-    end
-
     describe "#execute" do
       it { expect{ subject.execute }.to raise_error(MissingBitmap) }
     end

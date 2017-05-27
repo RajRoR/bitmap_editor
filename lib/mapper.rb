@@ -1,5 +1,6 @@
 require './lib/commands/create'
 require './lib/commands/color_pixel'
+require './lib/commands/vertical_draw'
 require './lib/commands/show'
 require './lib/error'
 

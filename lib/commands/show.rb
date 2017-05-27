@@ -21,6 +21,7 @@ module Commands
     # @return [Show] the newly created instance of the command.
     def self.create(app, *args)
       fail BadNumberArguments.new(args.length, 0) unless args.empty?
+
       new(app)
     end
   end
