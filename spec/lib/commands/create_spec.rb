@@ -1,20 +1,20 @@
 require 'spec_helper'
 
 describe Commands::Create do
+  subject(:create_new) { described_class.new(app, width, height) }
+
   let(:app)    { App.new }
   let(:width)  { '2' }
   let(:height) { '2' }
 
-  subject { Commands::Create.new(app, width, height) }
-
   describe '#initialize' do
-    it { expect(subject.app).to eq(app) }
-    it { expect(subject.width).to eq(width.to_i) }
-    it { expect(subject.height).to eq(height.to_i) }
+    it { expect(create_new.app).to eq(app) }
+    it { expect(create_new.width).to eq(width.to_i) }
+    it { expect(create_new.height).to eq(height.to_i) }
   end
 
   describe '#execute' do
-    before { subject.execute }
+    before { create_new.execute }
 
     it { expect(app.bitmap).to be_a(Bitmap) }
     it { expect(app.bitmap.width).to eq(width.to_i) }
@@ -23,20 +23,20 @@ describe Commands::Create do
 
   describe '#create' do
     context 'with correct arguments' do
-      subject { Commands::Create.create(app, width, height) }
+      subject(:create) { described_class.create(app, width, height) }
 
-      it { expect(subject).to be_a(Commands::Create) }
-      it { expect(subject.width).to eq(width.to_i) }
-      it { expect(subject.height).to eq(height.to_i) }
+      it { expect(create).to be_a(described_class) }
+      it { expect(create.width).to eq(width.to_i) }
+      it { expect(create.height).to eq(height.to_i) }
     end
 
     context 'with wrong number of arguments' do
-      it { expect { Commands::Create.create(app, width) }.to raise_error(BadNumberArguments) }
+      it { expect { described_class.create(app, width) }.to raise_error(BadNumberArguments) }
     end
 
     context 'with bad type of arguments' do
-      it { expect { Commands::Create.create(app, width, 'foo') }.to raise_error(InvalidArguments) }
-      it { expect { Commands::Create.create(app, 'foo', height) }.to raise_error(InvalidArguments) }
+      it { expect { described_class.create(app, width, 'foo') }.to raise_error(InvalidArguments) }
+      it { expect { described_class.create(app, 'foo', height) }.to raise_error(InvalidArguments) }
     end
   end
 end

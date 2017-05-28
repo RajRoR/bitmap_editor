@@ -8,10 +8,10 @@ describe Commands::Clear do
       Commands::Create.new(app, 2, 2).execute
     end
 
-    subject { Commands::Clear.new(app) }
+    subject(:command_clear) { described_class.new(app) }
 
     describe '#initialize' do
-      it { expect(subject.app).to eq(app) }
+      it { expect(command_clear.app).to eq(app) }
     end
 
     describe '#execute' do
@@ -19,27 +19,27 @@ describe Commands::Clear do
         app.bitmap[1, 1] = 'A'
       end
 
-      it { expect { subject.execute }.to change { app.bitmap.data }.from('AOOO').to('OOOO') }
+      it { expect { command_clear.execute }.to change { app.bitmap.data }.from('AOOO').to('OOOO') }
     end
 
     describe '#create' do
       context 'with correct arguments' do
-        subject { Commands::Clear.create(app) }
+        subject(:clear_create) { described_class.create(app) }
 
-        it { expect(subject).to be_a(Commands::Clear) }
+        it { expect(clear_create).to be_a(described_class) }
       end
 
       context 'with wrong number of arguments' do
-        it { expect { Commands::Clear.create(app, 'foo') }.to raise_error(BadNumberArguments) }
+        it { expect { described_class.create(app, 'foo') }.to raise_error(BadNumberArguments) }
       end
     end
   end
 
   context 'when no bitmap was created' do
-    subject { Commands::Clear.new(app) }
+    subject(:clear_new) { described_class.new(app) }
 
     describe '#execute' do
-      it { expect { subject.execute }.to raise_error(MissingBitmap) }
+      it { expect { clear_new.execute }.to raise_error(MissingBitmap) }
     end
   end
 end

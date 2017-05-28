@@ -8,34 +8,34 @@ describe Commands::Show do
       Commands::Create.new(app, 2, 2).execute
     end
 
-    subject { Commands::Show.new(app) }
+    subject(:show_new) { described_class.new(app) }
 
     describe '#initialize' do
-      it { expect(subject.app).to eq(app) }
+      it { expect(show_new.app).to eq(app) }
     end
 
     describe '#execute' do
-      it { expect { subject.execute }.to output("OO\nOO\n").to_stdout }
+      it { expect { show_new.execute }.to output("OO\nOO\n").to_stdout }
     end
 
     describe '#create' do
       context 'with correct arguments' do
-        subject { Commands::Show.create(app) }
+        subject(:show_create) { described_class.create(app) }
 
-        it { expect(subject).to be_a(Commands::Show) }
+        it { expect(show_create).to be_a(described_class) }
       end
 
       context 'with bad number of arguments' do
-        it { expect { Commands::Show.create(app, 'foo') }.to raise_error(BadNumberArguments) }
+        it { expect { described_class.create(app, 'foo') }.to raise_error(BadNumberArguments) }
       end
     end
   end
 
   context 'when no bitmap was created' do
-    subject { Commands::Show.new(app) }
+    subject(:show_new) { described_class.new(app) }
 
     describe '#execute' do
-      it { expect { subject.execute }.to raise_error(MissingBitmap) }
+      it { expect { show_new.execute }.to raise_error(MissingBitmap) }
     end
   end
 end
