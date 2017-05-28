@@ -1,6 +1,7 @@
 require './lib/command'
 
 module Commands
+  # Clears the table, setting all pixels to white (O)
   class Clear < Command
     # Clear the bitmap
     def execute

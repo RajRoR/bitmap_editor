@@ -1,4 +1,5 @@
 module Commands
+  # Show the contents of the current image
   class Show < Command
     # Display the bitmap.
     def execute

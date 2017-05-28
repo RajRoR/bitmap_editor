@@ -1,6 +1,7 @@
 require './lib/command'
 
 module Commands
+  # Color a Pixel with the provided color
   class ColorPixel < Command
     attr_reader :x, :y, :color
 
@@ -30,7 +31,7 @@ module Commands
     # @return [ColorPixel] the newly created instance of the command.
     def self.create(app, *args)
       raise BadNumberArguments.new(args.length, 3) if args.length != 3
-      raise InvalidArguments unless Utils.is_i?(args[0]) && Utils.is_i?(args[1]) && Utils.is_color?(args[2])
+      raise InvalidArguments unless Utils.i?(args[0]) && Utils.i?(args[1]) && Utils.color?(args[2])
 
       new(app, *args)
     end

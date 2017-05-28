@@ -1,5 +1,6 @@
 require './lib/app'
 
+# Class BitmapEditor - Responsible to run the provided input file of commands
 class BitmapEditor
   def run(file)
     plot_bitmap(file)

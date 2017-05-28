@@ -1,6 +1,7 @@
 require './lib/command'
 
 module Commands
+  # Draw a horizontal segment of colour C in row Y between columns X1 and X2 (inclusive)
   class HorizontalDraw < Command
     attr_reader :x1, :x2, :y, :color
 
@@ -36,10 +37,17 @@ module Commands
     # @return [HorizontalDraw] the newly created instance of the command
     def self.create(app, *args)
       raise BadNumberArguments.new(args.length, 4) if args.length != 4
-      raise InvalidArguments unless Utils.is_i?(args[0]) && Utils.is_i?(args[1]) &&
-                                    Utils.is_i?(args[2]) && Utils.is_color?(args[3])
+      raise InvalidArguments unless valid_args?(args)
 
       new(app, *args)
+    end
+
+    class << self
+      private
+
+      def valid_args?(args)
+        Utils.i?(args[0]) && Utils.i?(args[1]) && Utils.i?(args[2]) && Utils.color?(args[3])
+      end
     end
   end
 end

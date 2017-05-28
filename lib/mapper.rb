@@ -6,6 +6,9 @@ require './lib/commands/horizontal_draw'
 require './lib/commands/show'
 require './lib/error'
 
+# Class Mapper
+#
+# Created on
 class Mapper
   attr_reader :app
 

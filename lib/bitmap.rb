@@ -1,3 +1,4 @@
+# Class holding all basic bitmap methods
 class Bitmap
   attr_reader :width, :height
 

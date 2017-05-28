@@ -34,10 +34,13 @@ describe Commands::HorizontalDraw do
         subject(:hd_create) { described_class.create(app, x1, x2, y, color) }
 
         it { expect(hd_create).to       be_a(described_class) }
-        it { expect(hd_create.x1).to    eq(x1.to_i) }
-        it { expect(hd_create.x2).to    eq(x2.to_i) }
-        it { expect(hd_create.y).to     eq(y.to_i)  }
-        it { expect(hd_create.color).to eq(color)   }
+        it { expect(hd_create.color).to eq(color) }
+
+        context 'integer inputs' do
+          it { expect(hd_create.x1).to    eq(x1.to_i) }
+          it { expect(hd_create.x2).to    eq(x2.to_i) }
+          it { expect(hd_create.y).to     eq(y.to_i)  }
+        end
       end
 
       context 'with wrong number of arguments' do

@@ -1,6 +1,7 @@
 require './lib/commands/color_pixel'
 
 module Commands
+  # Draw a vertical segment of colour C in column X between rows Y1 and Y2 (inclusive)
   class VerticalDraw < Command
     attr_reader :x, :y1, :y2, :color
 
@@ -36,10 +37,17 @@ module Commands
     # @return [VerticalDraw] the newly created instance of the command
     def self.create(app, *args)
       raise BadNumberArguments.new(args.length, 4) if args.length != 4
-      raise InvalidArguments unless Utils.is_i?(args[0]) && Utils.is_i?(args[1]) &&
-                                    Utils.is_i?(args[2]) && Utils.is_color?(args[3])
+      raise InvalidArguments unless valid_args?(args)
 
       new(app, *args)
+    end
+
+    class << self
+      private
+
+      def valid_args?(args)
+        Utils.i?(args[0]) && Utils.i?(args[1]) && Utils.i?(args[2]) && Utils.color?(args[3])
+      end
     end
   end
 end
