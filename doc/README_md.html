@@ -56,6 +56,11 @@
 
   <ul class="link-list" role="directory">
     <li><a href="#label-Bitmap+editor">Bitmap editor</a>
+    <li><a href="#label-Program+Input">Program Input</a>
+    <li><a href="#label-Commands">Commands</a>
+    <li><a href="#label-Example">Example</a>
+    <li><a href="#label-Input+File-3A">Input File:</a>
+    <li><a href="#label-Expected+Output-3A">Expected Output:</a>
     <li><a href="#label-Running">Running</a>
   </ul>
 </div>
@@ -81,7 +86,7 @@
   
     <li><a href="./examples/show_txt.html">show</a>
   
-    <li><a href="./spec/factories/basic_txt.html">basic</a>
+    <li><a href="./spec/factories/out_of_range_txt.html">out_of_range</a>
   
   </ul>
 </div>
@@ -93,11 +98,55 @@
 
 <h1 id="label-Bitmap+editor"><a href="Bitmap.html">Bitmap</a> editor<span><a href="#label-Bitmap+editor">&para;</a> <a href="#top">&uarr;</a></span></h1>
 
-<p>..</p>
+<p>Simulation of a basic interactive bitmap editor. Bitmaps are represented as
+an M x N matrix of pixels with each element representing a colour.</p>
+
+<h3 id="label-Program+Input">Program Input<span><a href="#label-Program+Input">&para;</a> <a href="#top">&uarr;</a></span></h3>
+
+<p>The input consists of a file containing a sequence of commands, where a
+command is represented by a single capital letter at the beginning of the
+line. Parameters of the command are separated by white spaces and they
+follow the command character. Pixel co-ordinates are a pair of integers: a
+column number between 1 and 250, and a row number between 1 and 250.
+Bitmaps starts at coordinates 1,1. Colours are specified by capital
+letters.</p>
+
+<h3 id="label-Commands"><a href="Commands.html">Commands</a><span><a href="#label-Commands">&para;</a> <a href="#top">&uarr;</a></span></h3>
+
+<p>There are 6 supported commands: <code> I M N - Create a new M x N image
+with all pixels coloured white (O). C - Clears the table, setting all
+pixels to white (O). L X Y C - Colours the pixel (X,Y) with colour C. V X
+Y1 Y2 C - Draw a vertical segment of colour C in column X between rows Y1
+and Y2 (inclusive). H X1 X2 Y C - Draw a horizontal segment of colour C in
+row Y between columns X1 and X2 (inclusive). S - Show the contents of the
+current image </code></p>
+
+<h3 id="label-Example">Example<span><a href="#label-Example">&para;</a> <a href="#top">&uarr;</a></span></h3>
+
+<p>To run the application you must supply a command file like so
+<code>bin/bitmap_editor examples/show.txt</code></p>
+
+<h4 id="label-Input+File-3A">Input File:<span><a href="#label-Input+File-3A">&para;</a> <a href="#top">&uarr;</a></span></h4>
+
+<pre>I 5 6
+L 1 3 A
+V 2 3 6 W
+H 3 5 2 Z
+S</pre>
+
+<h4 id="label-Expected+Output-3A">Expected Output:<span><a href="#label-Expected+Output-3A">&para;</a> <a href="#top">&uarr;</a></span></h4>
+
+<pre class="ruby"><span class="ruby-constant">OOOOO</span>
+<span class="ruby-constant">OOZZZ</span>
+<span class="ruby-constant">AWOOO</span>
+<span class="ruby-constant">OWOOO</span>
+<span class="ruby-constant">OWOOO</span>
+<span class="ruby-constant">OWOOO</span>
+</pre>
 
 <h1 id="label-Running">Running<span><a href="#label-Running">&para;</a> <a href="#top">&uarr;</a></span></h1>
 
-<p><code>&gt;bin/bitmap_editor examples/show.txt</code></p>
+<pre>&gt;bin/bitmap_editor examples/show.txt</pre>
 </main>
 
 

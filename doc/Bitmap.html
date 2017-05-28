@@ -112,6 +112,20 @@
     
 
     
+    <section class="constants-list">
+      <header>
+        <h3>Constants</h3>
+      </header>
+      <dl>
+      
+        <dt id="MAX_HEIGHT">MAX_HEIGHT
+        
+        <dd>
+        
+      
+      </dl>
+    </section>
+    
 
     
     <section class="attribute-method-details" class="method-section">
@@ -178,7 +192,7 @@ width of the bitmap</p>
 
           
           <div class="method-source-code" id="new-source">
-            <pre><span class="ruby-comment"># File lib/bitmap.rb, line 9</span>
+            <pre><span class="ruby-comment"># File lib/bitmap.rb, line 11</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">initialize</span>(<span class="ruby-identifier">width</span>, <span class="ruby-identifier">height</span>)
   <span class="ruby-ivar">@height</span> = <span class="ruby-identifier">height</span>.<span class="ruby-identifier">to_i</span>
   <span class="ruby-ivar">@width</span> = <span class="ruby-identifier">width</span>.<span class="ruby-identifier">to_i</span>
@@ -224,7 +238,7 @@ width of the bitmap</p>
 
           
           <div class="method-source-code" id="5B-5D-source">
-            <pre><span class="ruby-comment"># File lib/bitmap.rb, line 41</span>
+            <pre><span class="ruby-comment"># File lib/bitmap.rb, line 44</span>
 <span class="ruby-keyword">def</span> <span class="ruby-operator">[]</span>(<span class="ruby-identifier">x</span>, <span class="ruby-identifier">y</span>)
   <span class="ruby-identifier">raise</span> <span class="ruby-constant">OutOfRange</span> <span class="ruby-keyword">unless</span> <span class="ruby-identifier">check_range</span>(<span class="ruby-identifier">x</span>, <span class="ruby-identifier">y</span>)
   <span class="ruby-identifier">data</span>[<span class="ruby-identifier">index</span>(<span class="ruby-identifier">x</span>, <span class="ruby-identifier">y</span>)]
@@ -261,7 +275,7 @@ width of the bitmap</p>
 
           
           <div class="method-source-code" id="5B-5D-3D-source">
-            <pre><span class="ruby-comment"># File lib/bitmap.rb, line 69</span>
+            <pre><span class="ruby-comment"># File lib/bitmap.rb, line 72</span>
 <span class="ruby-keyword">def</span> <span class="ruby-operator">[]=</span>(<span class="ruby-identifier">x</span>, <span class="ruby-identifier">y</span>, <span class="ruby-identifier">color</span>)
   <span class="ruby-identifier">raise</span> <span class="ruby-constant">OutOfRange</span> <span class="ruby-keyword">unless</span> <span class="ruby-identifier">check_range</span>(<span class="ruby-identifier">x</span>, <span class="ruby-identifier">y</span>)
   <span class="ruby-identifier">data</span>[<span class="ruby-identifier">index</span>(<span class="ruby-identifier">x</span>, <span class="ruby-identifier">y</span>)] = <span class="ruby-identifier">color</span>
@@ -298,7 +312,7 @@ width of the bitmap</p>
 
           
           <div class="method-source-code" id="check_range-source">
-            <pre><span class="ruby-comment"># File lib/bitmap.rb, line 60</span>
+            <pre><span class="ruby-comment"># File lib/bitmap.rb, line 63</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">check_range</span>(<span class="ruby-identifier">x</span>, <span class="ruby-identifier">y</span>)
   <span class="ruby-operator">!</span>(<span class="ruby-identifier">x</span> <span class="ruby-operator">&lt;</span> <span class="ruby-value">1</span> <span class="ruby-operator">||</span> <span class="ruby-identifier">y</span> <span class="ruby-operator">&lt;</span> <span class="ruby-value">1</span> <span class="ruby-operator">||</span> <span class="ruby-identifier">x</span> <span class="ruby-operator">&gt;</span> <span class="ruby-identifier">width</span> <span class="ruby-operator">||</span> <span class="ruby-identifier">y</span> <span class="ruby-operator">&gt;</span> <span class="ruby-identifier">height</span>)
 <span class="ruby-keyword">end</span></pre>
@@ -333,7 +347,7 @@ width of the bitmap</p>
 
           
           <div class="method-source-code" id="clear-source">
-            <pre><span class="ruby-comment"># File lib/bitmap.rb, line 32</span>
+            <pre><span class="ruby-comment"># File lib/bitmap.rb, line 35</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">clear</span>
   <span class="ruby-ivar">@data</span> = <span class="ruby-string">&#39;O&#39;</span> <span class="ruby-operator">*</span> <span class="ruby-identifier">size</span>
 <span class="ruby-keyword">end</span></pre>
@@ -368,7 +382,7 @@ width of the bitmap</p>
 
           
           <div class="method-source-code" id="data-source">
-            <pre><span class="ruby-comment"># File lib/bitmap.rb, line 25</span>
+            <pre><span class="ruby-comment"># File lib/bitmap.rb, line 28</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">data</span>
   <span class="ruby-ivar">@data</span> <span class="ruby-operator">||=</span> <span class="ruby-string">&#39;O&#39;</span> <span class="ruby-operator">*</span> <span class="ruby-identifier">size</span>
 <span class="ruby-keyword">end</span></pre>
@@ -404,7 +418,7 @@ pixel. @return [Integer] the real index in the table.</p>
 
           
           <div class="method-source-code" id="index-source">
-            <pre><span class="ruby-comment"># File lib/bitmap.rb, line 51</span>
+            <pre><span class="ruby-comment"># File lib/bitmap.rb, line 54</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">index</span>(<span class="ruby-identifier">x</span>, <span class="ruby-identifier">y</span>)
   (<span class="ruby-identifier">y</span> <span class="ruby-operator">-</span> <span class="ruby-value">1</span>) <span class="ruby-operator">*</span> <span class="ruby-identifier">width</span> <span class="ruby-operator">+</span> (<span class="ruby-identifier">x</span> <span class="ruby-operator">-</span> <span class="ruby-value">1</span>)
 <span class="ruby-keyword">end</span></pre>
@@ -439,8 +453,9 @@ pixel. @return [Integer] the real index in the table.</p>
 
           
           <div class="method-source-code" id="size-source">
-            <pre><span class="ruby-comment"># File lib/bitmap.rb, line 18</span>
+            <pre><span class="ruby-comment"># File lib/bitmap.rb, line 20</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">size</span>
+  <span class="ruby-identifier">raise</span> <span class="ruby-constant">OutOfRange</span> <span class="ruby-keyword">if</span> <span class="ruby-identifier">width</span> <span class="ruby-operator">&gt;</span> <span class="ruby-constant">MAX_WIDTH</span> <span class="ruby-operator">||</span> <span class="ruby-identifier">height</span> <span class="ruby-operator">&gt;</span> <span class="ruby-constant">MAX_HEIGHT</span>
   <span class="ruby-identifier">width</span> <span class="ruby-operator">*</span> <span class="ruby-identifier">height</span>
 <span class="ruby-keyword">end</span></pre>
           </div>
