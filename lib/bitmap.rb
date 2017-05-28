@@ -2,6 +2,8 @@
 class Bitmap
   attr_reader :width, :height
 
+  MAX_HEIGHT = MAX_WIDTH = 250
+
   # Initialize the class.
   #
   # @param [Integer] height the height of the bitmap
@@ -16,6 +18,7 @@ class Bitmap
   #
   # @return [Integer] the size of the data representing the bitmap.
   def size
+    raise OutOfRange if width > MAX_WIDTH || height > MAX_HEIGHT
     width * height
   end
 
