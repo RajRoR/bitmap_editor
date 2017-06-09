@@ -1,4 +1,4 @@
-require './lib/commands/color_pixel'
+require './lib/command'
 
 module Commands
   # Draw a vertical segment of colour C in column X between rows Y1 and Y2 (inclusive)
