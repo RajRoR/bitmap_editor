@@ -1,13 +1,9 @@
 require 'spec_helper'
 
 describe Mapper do
-  subject(:mapper) { described_class.new(app) }
+  subject(:mapper) { described_class.new }
 
   let(:app) { App.new }
-
-  describe '#initialize' do
-    it { expect(mapper.app).to eq(app) }
-  end
 
   describe '#map' do
     context 'with valid commands' do

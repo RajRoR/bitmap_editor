@@ -7,13 +7,11 @@ module Commands
 
     # Initialize the Class.
     #
-    # @param [App] app App object
     # @param [Integer] x the column to modify
     # @param [Integer] y1 the row beginning coordinate
     # @param [Integer] y2 the row ending coordinate
     # @param [Char] color the colour to apply on the column.
-    def initialize(app, x, y1, y2, color)
-      super(app)
+    def initialize(x, y1, y2, color)
       @x = x.to_i
       @y1 = y1.to_i
       @y2 = y2.to_i
@@ -21,25 +19,25 @@ module Commands
     end
 
     # Draw a vertical segment with color C in column X between rows Y1 and Y2 (inclusive)
-    def execute
+    # @param [App] app App object
+    def execute(app)
       raise MissingBitmap if app.bitmap.nil?
 
       (y1..y2).each do |y|
-        color_pixel = Commands::ColorPixel.create(app, x, y, color)
-        color_pixel.execute
+        color_pixel = Commands::ColorPixel.create(x, y, color)
+        color_pixel.execute(app)
       end
     end
 
     # Class method. Verify the arguments and create the command
     #
-    # @param [App] app App object
     # @param [] args List of the arguments passed to the initialize method
     # @return [VerticalDraw] the newly created instance of the command
-    def self.create(app, *args)
+    def self.create(*args)
       raise BadNumberArguments.new(args.length, 4) if args.length != 4
       raise InvalidArguments unless valid_args?(args)
 
-      new(app, *args)
+      new(*args)
     end
 
     class << self

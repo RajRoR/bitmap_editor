@@ -4,7 +4,7 @@ module Commands
   # Clears the table, setting all pixels to white (O)
   class Clear < Command
     # Clear the bitmap
-    def execute
+    def execute(app)
       raise MissingBitmap if app.bitmap.nil?
 
       app.bitmap.clear
@@ -15,10 +15,10 @@ module Commands
     # @param [App] app App object
     # @param [] args List of the arguments passed to the initialize method
     # @return [Clear] the newly created instance of the command
-    def self.create(app, *args)
+    def self.create(*args)
       raise BadNumberArguments.new(args.length, 0) unless args.empty?
 
-      new(app)
+      new()
     end
   end
 end

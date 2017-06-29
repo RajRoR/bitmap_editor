@@ -7,33 +7,32 @@ module Commands
 
     # Initialize the Class
     #
-    # @param [App] app App object
     # @param [Integer] x the column in the region
     # @param [Integer] y the row in the region
     # @param [Char] color the color to apply in the region
-    def initialize(app, x, y, color)
-      super(app)
+    def initialize(x, y, color)
       @x = x.to_i
       @y = y.to_i
       @color = color
     end
 
     # Fill the region in which pixel (X, Y) lies, with Color C
-    def execute
+    # @param [App] app App object
+    def execute(app)
       fail MissingBitmap if app.bitmap.nil?
+      @app = app
       fill(app.bitmap, x, y, app.bitmap[x, y], color)
     end
 
     # Class method. Verify the arguments and create the command.
     #
-    # @param [App] app App object running the application.
     # @param [] args List of the arguments passed to the initialize method.
     # @return [Fill] the newly created instance of the command.
-    def self.create(app, *args)
+    def self.create(*args)
       fail BadNumberArguments.new(args.length, 3) if args.length != 3
       fail InvalidArguments unless valid_args?(args)
 
-      new(app, *args)
+      new(*args)
     end
 
     private
@@ -56,8 +55,8 @@ module Commands
     end
 
     def color_pixel(x, y, color)
-      color_pixel = Commands::ColorPixel.create(app, x, y, color)
-      color_pixel.execute
+      color_pixel = Commands::ColorPixel.create(x, y, color)
+      color_pixel.execute(@app)
     end
 
     class << self

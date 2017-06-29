@@ -7,7 +7,6 @@ class App
 
   # Initialize the class.
   def initialize
-    @bitmap = nil
-    @mapper = Mapper.new(self)
+    @mapper = Mapper.new
   end
 end
