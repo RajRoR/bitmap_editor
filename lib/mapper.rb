@@ -4,6 +4,7 @@ require './lib/commands/color_pixel'
 require './lib/commands/vertical_draw'
 require './lib/commands/horizontal_draw'
 require './lib/commands/fill_region'
+require './lib/commands/outline'
 require './lib/commands/show'
 require './lib/error'
 
@@ -26,6 +27,7 @@ class Mapper
       'V' => 'VerticalDraw',
       'H' => 'HorizontalDraw',
       'F' => 'FillRegion',
+      'O' => 'Outline',
       'S' => 'Show'
     }
   end

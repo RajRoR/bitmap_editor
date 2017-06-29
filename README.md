@@ -15,6 +15,7 @@ L X Y C - Colours the pixel (X,Y) with colour C.
 V X Y1 Y2 C - Draw a vertical segment of colour C in column X between rows Y1 and Y2 (inclusive).
 H X1 X2 Y C - Draw a horizontal segment of colour C in row Y between columns X1 and X2 (inclusive).
 F X Y C - Fill the region in which pixel (X, Y) lies with Colour C.
+O 1 2 4 5 X - Make an outline with the given points and color
 S - Show the contents of the current image
 ```
 
@@ -28,16 +29,17 @@ L 1 3 A
 V 2 3 6 W
 H 3 5 2 Z
 F 3 3 R
+O 1 2 4 5 X
 S
 ```
 
 #### Expected Output:
 ```
 OOOOO
-OOZZZ
-AWRRR
-OWRRR
-OWRRR
+XXXXZ
+XWRXR
+XWRXR
+XXXXR
 OWRRR
 ```
 
