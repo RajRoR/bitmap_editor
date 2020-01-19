@@ -22,7 +22,7 @@ describe Commands::FillRegion do
     describe '#execute' do
       before { app.bitmap[2, 2] = 'A' }
 
-      it { expect { fill.execute(app) }.to change { app.bitmap.data }.from('OOOOAOOOO').to('RRRRARRRR')  }
+      it { expect { fill.execute(app) }.to change { app.bitmap.data }.from('OOOOAOOOO').to('RRRRARRRR') }
     end
 
     describe '#create' do
@@ -34,7 +34,7 @@ describe Commands::FillRegion do
 
         context 'integer inputs' do
           it { expect(fill_create.x).to     eq(x.to_i) }
-          it { expect(fill_create.y).to     eq(y.to_i)  }
+          it { expect(fill_create.y).to     eq(y.to_i) }
         end
       end
 

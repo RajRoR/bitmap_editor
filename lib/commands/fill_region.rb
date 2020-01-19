@@ -19,7 +19,7 @@ module Commands
     # Fill the region in which pixel (X, Y) lies, with Color C
     # @param [App] app App object
     def execute(app)
-      fail MissingBitmap if app.bitmap.nil?
+      raise MissingBitmap if app.bitmap.nil?
       @app = app
       fill(app.bitmap, x, y, app.bitmap[x, y], color)
     end
@@ -29,8 +29,8 @@ module Commands
     # @param [] args List of the arguments passed to the initialize method.
     # @return [Fill] the newly created instance of the command.
     def self.create(*args)
-      fail BadNumberArguments.new(args.length, 3) if args.length != 3
-      fail InvalidArguments unless valid_args?(args)
+      raise BadNumberArguments.new(args.length, 3) if args.length != 3
+      raise InvalidArguments unless valid_args?(args)
 
       new(*args)
     end

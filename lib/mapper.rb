@@ -28,4 +28,4 @@ class Mapper
 end
 
 require './lib/error'
-Dir[File.join(File.expand_path('../', __FILE__), 'commands', '*')].each {|f| require f}
+Dir[File.join(File.expand_path('../', __FILE__), 'commands', '*')].each { |f| require f }

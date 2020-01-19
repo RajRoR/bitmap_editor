@@ -33,8 +33,6 @@ GEM
       rainbow (>= 1.99.1, < 3.0)
       ruby-progressbar (~> 1.7)
       unicode-display_width (~> 1.0, >= 1.0.1)
-    rubocop-rspec (1.15.1)
-      rubocop (>= 0.42.0)
     ruby-progressbar (1.8.1)
     simplecov (0.14.1)
       docile (~> 1.1.0)
@@ -50,11 +48,10 @@ DEPENDENCIES
   byebug
   rspec
   rubocop
-  rubocop-rspec
   simplecov
 
 RUBY VERSION
    ruby 2.3.4p301
 
 BUNDLED WITH
-   1.15.0
+   1.17.3

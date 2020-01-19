@@ -23,7 +23,7 @@ module Commands
     def self.create(*args)
       raise BadNumberArguments.new(args.length, 0) unless args.empty?
 
-      new()
+      new
     end
   end
 end
